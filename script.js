@@ -539,47 +539,6 @@ videos.forEach(function (video) {
 });
 
 
-/* ========================================
-   PLAY / PAUSE LA ATINGEREA VIDEOCLIPULUI
-======================================== */
-
-videos.forEach(function (video) {
-
-    video.addEventListener("click", function (event) {
-
-        // Evităm să intervenim când utilizatorul
-        // apasă pe comenzile native ale playerului.
-
-        const rect = video.getBoundingClientRect();
-
-        const distanceFromBottom =
-            rect.bottom - event.clientY;
-
-        // Lăsăm comenzile native să funcționeze.
-        if (distanceFromBottom < 55) {
-            return;
-        }
-
-        if (video.paused || video.ended) {
-
-            video.play().catch(function () {
-
-                console.log(
-                    "Videoclipul nu a putut fi pornit."
-                );
-
-            });
-
-        } else {
-
-            video.pause();
-
-        }
-
-    });
-
-});
-
 
 
 
